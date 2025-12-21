@@ -2,71 +2,66 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Giao bài – Giao bài tập</title>
+<title>📤 Giao bài & Học liệu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-    font-family: "Segoe UI", sans-serif;
-    background: #eef3f7;
-    margin: 0;
-    padding: 0;
+body{
+    font-family:Segoe UI, sans-serif;
+    background:#eef3f7;
+    margin:0;
 }
-.wrap {
-    max-width: 950px;
-    margin: 30px auto;
-    background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+.wrap{
+    max-width:960px;
+    margin:30px auto;
+    background:#fff;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.18);
 }
-h1 { text-align: center; color: #0a4a8e; }
+h1{text-align:center;color:#0a4a8e}
+label{font-weight:600;margin-top:12px;display:block}
+select,input,textarea{
+    width:100%;
+    padding:10px;
+    margin-top:6px;
+    border:1px solid #c7d7e4;
+    border-radius:8px;
+    font-size:15px;
+}
+textarea{resize:vertical}
+button{
+    background:#0b74d1;
+    color:#fff;
+    padding:14px 22px;
+    margin-top:20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:17px;
+}
+button:hover{background:#095ba8}
+.back-btn{background:#888}
+.back-btn:hover{background:#666}
 
-label {
-    font-weight: 600;
-    margin-top: 12px;
-    display: block;
+.success{
+    background:#e1fbd8;
+    padding:12px;
+    border-left:5px solid #4caf50;
+    border-radius:8px;
+    margin-top:20px;
 }
-
-select, input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 6px;
-    border: 1px solid #c7d7e4;
-    border-radius: 8px;
-    font-size: 16px;
+.error{
+    background:#ffe2e2;
+    padding:12px;
+    border-left:5px solid #e53935;
+    border-radius:8px;
+    margin-top:20px;
 }
-
-button {
-    background: #0b74d1;
-    color: #fff;
-    padding: 14px 22px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 18px;
-}
-button:hover { background: #095ba8; }
-
-.back-btn {
-    background: #888;
-}
-.back-btn:hover { background: #666; }
-
-.success {
-    background: #e1fbd8;
-    padding: 12px;
-    border-left: 5px solid #4caf50;
-    border-radius: 8px;
-    margin-top: 20px;
-}
-.error {
-    background: #ffe2e2;
-    padding: 12px;
-    border-left: 5px solid #e53935;
-    border-radius: 8px;
-    margin-top: 20px;
+.section{
+    margin-top:30px;
+    padding-top:20px;
+    border-top:2px dashed #d0dbe6;
 }
 </style>
 </head>
@@ -75,107 +70,156 @@ button:hover { background: #095ba8; }
 
 <div class="wrap">
 
-    <button class="back-btn" onclick="window.location.href='teacher_dashboard.html'">← Quay lại</button>
+<button class="back-btn" onclick="window.location.href='teacher_dashboard.html'">← Quay lại</button>
 
-    <h1>📝 GIAO BÀI – GIAO BÀI TẬP</h1>
+<h1>📤 GIAO BÀI & HỌC LIỆU</h1>
+<div id="msg"></div>
 
-    <div id="msg"></div>
+<!-- ================= GIAO BÀI KIỂM TRA ================= -->
+<div class="section">
+<h2>📝 Giao bài kiểm tra</h2>
 
-    <label>Chọn lớp giao bài:</label>
-    <select id="assignClass">
-        <option value="6A">Lớp 6A</option>
-        <option value="6B">Lớp 6B</option>
-        <option value="7A">Lớp 7A</option>
-        <option value="7B">Lớp 7B</option>
-        <option value="8A">Lớp 8A</option>
-        <option value="8B">Lớp 8B</option>
-        <option value="9A">Lớp 9A</option>
-        <option value="9B">Lớp 9B</option>
-    </select>
+<label>Chọn lớp:</label>
+<select id="assignClass">
+  <option value="6A">6A</option>
+  <option value="6B">6B</option>
+  <option value="7A1">7A1</option>
+  <option value="7A2">7A2</option>
+  <option value="8A">8A</option>
+  <option value="9A">9A</option>
+</select>
 
-    <label>Chọn đề kiểm tra:</label>
-    <select id="assignExam">
-        <option value="">Đang tải dữ liệu đề...</option>
-    </select>
+<label>Chọn đề kiểm tra:</label>
+<select id="assignExam">
+  <option>⏳ Đang tải đề...</option>
+</select>
 
-    <label>Hạn nộp bài:</label>
-    <input type="datetime-local" id="assignDeadline">
+<label>Hạn nộp:</label>
+<input type="datetime-local" id="assignDeadline">
 
-    <button onclick="assignExam()">📤 Giao bài</button>
+<button onclick="assignExam()">📤 Giao bài</button>
+</div>
+
+<!-- ================= GỬI HỌC LIỆU ================= -->
+<div class="section">
+<h2>📚 Gửi học liệu cho học sinh</h2>
+
+<label>Lớp nhận học liệu:</label>
+<select id="materialClass">
+  <option value="6A">6A</option>
+  <option value="6B">6B</option>
+  <option value="7A1">7A1</option>
+  <option value="7A2">7A2</option>
+  <option value="8A">8A</option>
+  <option value="9A">9A</option>
+</select>
+
+<label>Tiêu đề học liệu:</label>
+<input type="text" id="materialTitle" placeholder="Ví dụ: Bài 7 – Internet">
+
+<label>Link học liệu (PDF / Video / Drive):</label>
+<input type="text" id="materialLink" placeholder="https://...">
+
+<label>Ghi chú:</label>
+<textarea id="materialNote" rows="3"></textarea>
+
+<button onclick="sendMaterial()">📘 Gửi học liệu</button>
+</div>
 
 </div>
 
 <script>
-// Chặn truy cập trái phép
-if (localStorage.getItem("role") !== "teacher") {
-    window.location.href = "index.html";
+// ================== CHẶN TRUY CẬP ==================
+if(localStorage.getItem("role")!=="teacher"){
+    alert("Bạn không có quyền!");
+    location.href="index.html";
 }
 
-// Load danh sách đề từ data/exams/index.json
-async function loadExams() {
-    const examSelect = document.getElementById("assignExam");
-    examSelect.innerHTML = `<option value="">Đang tải dữ liệu đề...</option>`;
+// ================== LOAD ĐỀ ==================
+async function loadExams(){
+    const select=document.getElementById("assignExam");
+    select.innerHTML="<option>⏳ Đang tải đề...</option>";
 
-    try {
-        const res = await fetch("data/exams/index.json");
-        if (!res.ok) throw new Error("Không tải được index.json");
-        const data = await res.json();
+    try{
+        const res=await fetch("./data/exams/index.json",{cache:"no-store"});
+        const data=await res.json();
 
-        if (!data.exams || data.exams.length === 0) {
-            examSelect.innerHTML = `<option value="">❌ Chưa có đề kiểm tra nào!</option>`;
-            return;
-        }
-
-        examSelect.innerHTML = "";
-        data.exams.forEach(ex => {
-            examSelect.innerHTML += `
-                <option value="${ex.file}">
-                    [${ex.grade}] ${ex.title}
-                </option>
-            `;
+        select.innerHTML="<option value=''>-- Chọn đề --</option>";
+        data.exams.forEach(e=>{
+            const opt=document.createElement("option");
+            opt.value=e.file;
+            opt.textContent=`[Lớp ${e.grade}] ${e.title}`;
+            select.appendChild(opt);
         });
-
-    } catch (e) {
-        examSelect.innerHTML = `<option value="">❌ Lỗi tải đề: ${e.message}</option>`;
+    }catch{
+        select.innerHTML="<option>❌ Không tải được đề</option>";
     }
 }
 
-// Giao bài
-function assignExam() {
-    const className = document.getElementById("assignClass").value;
-    const examFile = document.getElementById("assignExam").value;
-    const deadline = document.getElementById("assignDeadline").value;
-    const msgBox = document.getElementById("msg");
+// ================== GIAO BÀI ==================
+function assignExam(){
+    const cls=assignClass.value;
+    const exam=assignExam.value;
+    const deadline=assignDeadline.value;
+    const msg=document.getElementById("msg");
 
-    if (!examFile) {
-        msgBox.innerHTML = `<div class="error">⚠️ Vui lòng chọn đề kiểm tra!</div>`;
-        return;
-    }
-    if (!deadline) {
-        msgBox.innerHTML = `<div class="error">⚠️ Vui lòng chọn hạn nộp!</div>`;
+    if(!exam||!deadline){
+        msg.innerHTML="<div class='error'>⚠️ Thiếu thông tin</div>";
         return;
     }
 
-    let assignments = JSON.parse(localStorage.getItem("assignments") || "[]");
+    const list=JSON.parse(localStorage.getItem("assigned_exams")||"[]");
 
-    assignments.push({
-        class: className,
-        examFile,
+    list.push({
+        examFile: exam,
+        className: cls,
         deadline,
+        teacher: localStorage.getItem("username"),
         assignedAt: new Date().toLocaleString(),
-        teacher: localStorage.getItem("username")
+        active: true
     });
 
-    localStorage.setItem("assignments", JSON.stringify(assignments));
+    localStorage.setItem("assigned_exams",JSON.stringify(list));
 
-    msgBox.innerHTML = `<div class="success">✅ Đã giao đề <b>${examFile}</b> cho lớp <b>${className}</b>!</div>`;
-
-    document.getElementById("assignDeadline").value = "";
+    msg.innerHTML=`<div class='success'>✅ Đã giao bài cho lớp ${cls}</div>`;
+    assignDeadline.value="";
 }
 
-// Init
-loadExams();
+// ================== GỬI HỌC LIỆU ==================
+function sendMaterial(){
+    const cls=materialClass.value;
+    const title=materialTitle.value.trim();
+    const link=materialLink.value.trim();
+    const note=materialNote.value.trim();
+    const msg=document.getElementById("msg");
 
+    if(!title||!link){
+        msg.innerHTML="<div class='error'>⚠️ Thiếu tiêu đề hoặc link</div>";
+        return;
+    }
+
+    const materials=JSON.parse(localStorage.getItem("learning_materials")||"[]");
+
+    materials.push({
+        className: cls,
+        title,
+        link,
+        note,
+        teacher: localStorage.getItem("username"),
+        sentAt: new Date().toLocaleString()
+    });
+
+    localStorage.setItem("learning_materials",JSON.stringify(materials));
+
+    msg.innerHTML=`<div class='success'>📘 Đã gửi học liệu cho lớp ${cls}</div>`;
+
+    materialTitle.value="";
+    materialLink.value="";
+    materialNote.value="";
+}
+
+// ================== INIT ==================
+loadExams();
 </script>
 
 </body>
